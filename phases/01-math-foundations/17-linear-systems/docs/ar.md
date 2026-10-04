@@ -53,26 +53,38 @@
 
 ### المربعات الصغرى والمعادلات الطبيعية (Least Squares & Normal Equations)
 عندما يكون لدينا معادلات أكثر من المجاهيل ($m > n$)، نريد تقليل الخطأ المربع للحد الأدنى:
+
 $$ \min_x ||Ax - b||^2 $$
+
 لنشتق المعادلة الطبيعية:
 الخطأ هو:
+
 $$ f(x) = (Ax - b)^T (Ax - b) = x^T A^T A x - 2 x^T A^T b + b^T b $$
+
 لإيجاد الحد الأدنى، نأخذ المشتقة بالنسبة لـ $x$ ونساويها بالصفر:
+
 $$ \frac{d}{dx} f(x) = 2 A^T A x - 2 A^T b = 0 $$
+
 بالتالي نحصل على المعادلة الطبيعية (Normal Equation):
+
 $$ A^T A x = A^T b $$
 
 هذا بالضبط هو **الانحدار الخطي (Linear Regression)**:
+
 $$ X^T X w = X^T y \implies w = (X^T X)^{-1} X^T y $$
 
 ### انحدار الحافة (Ridge Regression)
 إذا كانت $X^T X$ غير قابلة للقلب (singular)، نضيف مصطلح تنظيم (Regularization term):
+
 $$ (X^T X + \lambda I) w = X^T y $$
+
 حيث $\lambda > 0$ يضمن أن المصفوفة الجديدة قابلة للقلب وموجبة تماماً، مما يسمح باستخدام تفكيك Cholesky السريع.
 
 ### العدد الشرطي (Condition Number)
 العدد الشرطي $\kappa(A)$ يقاس كالتالي:
+
 $$ \kappa(A) = \frac{\sigma_{max}}{\sigma_{min}} $$
+
 (حيث $\sigma$ هي القيم المفردة - Singular Values).
 - $\kappa \approx 1$: آمن ومستقر.
 - $\kappa \approx 10^k$: تفقد $k$ خانات عشرية من الدقة.
@@ -90,16 +102,25 @@ $$ \kappa(A) = \frac{\sigma_{max}}{\sigma_{min}} $$
 
 ## 8. تطبيق يدوي من الصفر (بدون مكتبات)
 تخيل النظام $2 \times 2$:
+
 $$ 2x_1 + x_2 = 5 $$
+
 $$ 4x_1 + 3x_2 = 11 $$
+
 بالمصفوفات:
-$$ \begin{bmatrix} 2 & 1 \\\\ 4 & 3 \end{bmatrix} \begin{bmatrix} x_1 \\\\ x_2 \end{bmatrix} = \begin{bmatrix} 5 \\\\ 11 \end{bmatrix} $$
+
+$$ \begin{bmatrix} 2 & 1 \\ 4 & 3 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} 5 \\ 11 \end{bmatrix} $$
+
 1. المحور الجزئي (Partial Pivoting): القيمة الأكبر في العمود الأول هي 4 (الصف الثاني). نبدل الصفين:
-$$ \begin{bmatrix} 4 & 3 & | & 11 \\\\ 2 & 1 & | & 5 \end{bmatrix} $$
+
+$$ \begin{bmatrix} 4 & 3 & | & 11 \\ 2 & 1 & | & 5 \end{bmatrix} $$
+
 2. الحذف: المعامل $m = 2/4 = 0.5$. نطرح $0.5 \times$ الصف الأول من الصف الثاني:
 الجديد: $2 - 0.5(4) = 0$, $1 - 0.5(3) = -0.5$, $5 - 0.5(11) = -0.5$.
 المصفوفة الجديدة:
-$$ \begin{bmatrix} 4 & 3 & | & 11 \\\\ 0 & -0.5 & | & -0.5 \end{bmatrix} $$
+
+$$ \begin{bmatrix} 4 & 3 & | & 11 \\ 0 & -0.5 & | & -0.5 \end{bmatrix} $$
+
 3. التعويض العكسي:
 $-0.5 x_2 = -0.5 \implies x_2 = 1$
 $4x_1 + 3(1) = 11 \implies 4x_1 = 8 \implies x_1 = 2$.
