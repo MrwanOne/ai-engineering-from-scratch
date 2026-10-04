@@ -74,14 +74,14 @@ $$ (m \times n) @ (n \times p) = (m \times p) $$
 يُستخدم الرمز `*` في NumPy. نضرب كل عنصر بالعنصر المقابل له في نفس الموقع. **يجب أن تكون المصفوفتان بنفس الأبعاد تماماً.**
 مثال:
 $$
-\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} * \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix} = \begin{bmatrix} 1 \times 5 & 2 \times 6 \\ 3 \times 7 & 4 \times 8 \end{bmatrix} = \begin{bmatrix} 5 & 12 \\ 21 & 32 \end{bmatrix}
+\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \end{bmatrix} * \begin{bmatrix} 5 & 6 \\\\ 7 & 8 \end{bmatrix} = \begin{bmatrix} 1 \times 5 & 2 \times 6 \\\\ 3 \times 7 & 4 \times 8 \end{bmatrix} = \begin{bmatrix} 5 & 12 \\\\ 21 & 32 \end{bmatrix}
 $$
 
 **ضرب المصفوفات (Dot Product / Matrix Multiplication):**
 يُستخدم الرمز `@` في بايثون. كل عنصر في النتيجة هو حاصل "الضرب النقطي" (Dot Product) لصف من المصفوفة الأولى مع عمود من المصفوفة الثانية.
 مثال:
 $$
-\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} @ \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix} = \begin{bmatrix} (1\times5 + 2\times7) & (1\times6 + 2\times8) \\ (3\times5 + 4\times7) & (3\times6 + 4\times8) \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix}
+\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \end{bmatrix} @ \begin{bmatrix} 5 & 6 \\\\ 7 & 8 \end{bmatrix} = \begin{bmatrix} (1\times5 + 2\times7) & (1\times6 + 2\times8) \\\\ (3\times5 + 4\times7) & (3\times6 + 4\times8) \end{bmatrix} = \begin{bmatrix} 19 & 22 \\\\ 43 & 50 \end{bmatrix}
 $$
 
 ### 6.2 البث (Broadcasting)
@@ -89,11 +89,11 @@ $$
 مثال: إضافة متجه التحيز (Bias) إلى مخرجات مصفوفة.
 المصفوفة: `2x3`، المتجه: `1x3`.
 $$
-\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix} + \begin{bmatrix} 10 & 20 & 30 \end{bmatrix}
+\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{bmatrix} + \begin{bmatrix} 10 & 20 & 30 \end{bmatrix}
 $$
 عملية البث تنسخ المتجه ليصبح مصفوفة `2x3` كالتالي:
 $$
-\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix} + \begin{bmatrix} 10 & 20 & 30 \\ 10 & 20 & 30 \end{bmatrix} = \begin{bmatrix} 11 & 22 & 33 \\ 14 & 25 & 36 \end{bmatrix}
+\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{bmatrix} + \begin{bmatrix} 10 & 20 & 30 \\\\ 10 & 20 & 30 \end{bmatrix} = \begin{bmatrix} 11 & 22 & 33 \\\\ 14 & 25 & 36 \end{bmatrix}
 $$
 
 ### 6.3 المحدد (Determinant) والمعكوس (Inverse)
