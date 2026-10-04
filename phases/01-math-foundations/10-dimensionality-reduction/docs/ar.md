@@ -51,7 +51,7 @@
 
 ### 5.3 نسبة التباين المفسر (Explained Variance Ratio) وطريقة اختيار k
 لتحديد عدد الأبعاد ($k$) التي يجب الاحتفاظ بها، نحسب النسبة التي يمثلها كل مكون رئيسي من إجمالي التباين:
-$$\text{explained\_ratio} = \frac{\lambda_k}{\sum \lambda}$$
+$$\text{explained-ratio} = \frac{\lambda_k}{\sum \lambda}$$
 **القاعدة:** نختار $k$ بحيث يكون التباين التراكمي (Cumulative Variance) بين 90% و 95%. يمكنك رسم التباين التراكمي واختيار النقطة التي يبدأ فيها المنحنى بالاستواء (طريقة الكوع - Elbow Method).
 
 ### 5.4 مقارنة: PCA و t-SNE و UMAP
