@@ -30,25 +30,25 @@
 ### 5.1 الدوران (Rotation)
 تدوير الفضاء حول نقطة الأصل بزاوية $\theta$.
 مصفوفة الدوران في البعد الثنائي (2D) هي:
-$$ R(\theta) = \begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix} $$
+$$ R(\theta) = \begin{bmatrix} \cos \theta & -\sin \theta \\\\ \sin \theta & \cos \theta \end{bmatrix} $$
 *مثال:* لتدوير النقطة بزاوية $90^\circ$ (حيث $\cos 90 = 0, \sin 90 = 1$):
-$$ R(90^\circ) = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
+$$ R(90^\circ) = \begin{bmatrix} 0 & -1 \\\\ 1 & 0 \end{bmatrix} $$
 
 ### 5.2 التحجيم (Scaling)
 تكبير أو تصغير الفضاء في اتجاه محاور $x$ و $y$.
-$$ S = \begin{bmatrix} s_x & 0 \\ 0 & s_y \end{bmatrix} $$
+$$ S = \begin{bmatrix} s_x & 0 \\\\ 0 & s_y \end{bmatrix} $$
 إذا كان $s_x = 2$，فهذا يعني مضاعفة عرض الفضاء، وإذا كان $s_y = 0.5$，فهذا يعني ضغط الارتفاع للنصف.
 
 ### 5.3 القص (Shearing)
 إمالة الفضاء. يشبه دفع قمة صندوق مستطيل ليصبح متوازي أضلاع.
 قص أفقي (بمقدار $k$):
-$$ Sh_x = \begin{bmatrix} 1 & k \\ 0 & 1 \end{bmatrix} $$
+$$ Sh_x = \begin{bmatrix} 1 & k \\\\ 0 & 1 \end{bmatrix} $$
 يُبقي الإحداثي $y$ كما هو، لكنه يزيح $x$ بمقدار يتناسب مع قيمة $y$.
 
 ### 5.4 الانعكاس (Reflection)
 قلب الفضاء كأنه أمام مرآة.
-- عبر محور y (يعكس قيم x): $\begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix}$
-- عبر محور x (يعكس قيم y): $\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$
+- عبر محور y (يعكس قيم x): $\begin{bmatrix} -1 & 0 \\\\ 0 & 1 \end{bmatrix}$
+- عبر محور x (يعكس قيم y): $\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \end{bmatrix}$
 
 ### 5.5 تركيب التحويلات (Composition)
 يمكننا تطبيق عدة تحويلات متتالية من خلال ضرب مصفوفاتها. إذا أردنا تطبيق التحويل $A$ ثم التحويل $B$ على المتجه $v$، نكتب:
@@ -75,7 +75,7 @@ $$ \lambda^2 - \text{Tr}(A)\lambda + \det(A) = 0 $$
 حيث الأثر $\text{Tr}(A)$ هو مجموع القطر الرئيسي ($a+d$)، والمحدد $\det(A) = ad-bc$.
 
 **مثال رقمي:**
-لتكن $A = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$.
+لتكن $A = \begin{bmatrix} 2 & 1 \\\\ 1 & 2 \end{bmatrix}$.
 - الأثر: $2+2 = 4$
 - المحدد: $(2\times 2) - (1\times 1) = 3$
 - المعادلة المميزة: $\lambda^2 - 4\lambda + 3 = 0$
@@ -102,9 +102,9 @@ $$ \lambda^2 - \text{Tr}(A)\lambda + \det(A) = 0 $$
 ## 8. تطبيق يدوي من الصفر (بدون مكتبات)
 لنفترض أن لدينا النقطة $v = [1, 0]$ (نقطة على محور x).
 نطّبق عليها مصفوفة دوران بـ $90^\circ$:
-$$ R = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
+$$ R = \begin{bmatrix} 0 & -1 \\\\ 1 & 0 \end{bmatrix} $$
 النتيجة:
-$$ R \times v = \begin{bmatrix} (0\times 1) + (-1\times 0) \\ (1\times 1) + (0\times 0) \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \end{bmatrix} $$
+$$ R \times v = \begin{bmatrix} (0\times 1) + (-1\times 0) \\\\ (1\times 1) + (0\times 0) \end{bmatrix} = \begin{bmatrix} 0 \\\\ 1 \end{bmatrix} $$
 لقد تحركت النقطة من محور x إلى محور y.
 
 ## 9. شرح الكود الأصلي بالتفصيل
