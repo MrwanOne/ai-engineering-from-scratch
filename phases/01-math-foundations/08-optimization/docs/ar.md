@@ -51,30 +51,44 @@
 ## 6. الشرح الرياضي المتكامل
 
 ### الانحدار الاشتقاقي (Gradient Descent)
+
 $$ w_{new} = w_{old} - \alpha \cdot \nabla L $$
+
 - $w$: الأوزان (Weights).
 - $\alpha$: معدل التعلم (Learning Rate).
 - $\nabla L$: تدرج دالة التكلفة (Gradient).
 
 ### الزخم (Momentum)
 بدلاً من الاعتماد على الميل الحالي فقط، نحتفظ بـ "سرعة" تتراكم فيها الميول السابقة. هذا يمنع التذبذب ويدفع بقوة في الاتجاه الصحيح.
+
 $$ v_t = \beta \cdot v_{t-1} + \nabla L $$
+
 $$ w_{new} = w_{old} - \alpha \cdot v_t $$
+
 - $v$: السرعة (Velocity).
 - $\beta$: معامل الزخم (غالباً 0.9).
 
 ### آدم (Adam)
 Adam يجمع بين Momentum (المتوسط المتحرك الأول) و RMSProp (المتوسط المتحرك الثاني).
 1. **العزم الأول (First Moment - Mean):**
+
    $$ m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot \nabla L $$
+
 2. **العزم الثاني (Second Moment - Variance):**
+
    $$ v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot (\nabla L)^2 $$
+
 3. **تصحيح التحيز (Bias Correction):**
    في البداية، تكون $m$ و $v$ قريبة من الصفر. لتصحيح ذلك نستخدم:
+
    $$ \hat{m}_t = \frac{m_t}{1 - \beta_1^t} $$
+
    $$ \hat{v}_t = \frac{v_t}{1 - \beta_2^t} $$
+
 4. **التحديث:**
+
    $$ w_{new} = w_{old} - \frac{\alpha \cdot \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} $$
+
 - $\epsilon$: رقم صغير جداً (مثل $10^{-8}$) لمنع القسمة على الصفر.
 
 ## 7. الخوارزميات (خطوة بخطوة)
