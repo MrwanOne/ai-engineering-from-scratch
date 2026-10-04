@@ -64,7 +64,7 @@ $$ \log P(Class | words) \propto \log P(Class) + \sum_{i} \log P(word_i | Class)
 ### 6.3 تنعيم لابلاس (Laplace Smoothing)
 ماذا لو واجه النموذج كلمة لم يرها من قبل في فئة معينة؟ سيكون الاحتمال 0، وبسبب الضرب في المعادلة الأصلية (أو لوغاريتم الصفر) سيفسد التقييم كله.
 الحل: تنعيم لابلاس:
-$$ P(word | Class) = \frac{count(word, Class) + 1}{total\_words\_in\_Class + vocab\_size} $$
+$$ P(word | Class) = \frac{count(word, Class) + 1}{\text{total-words-in-Class} + \text{vocab-size}} $$
 
 ## 7. الخوارزميات (خطوة بخطوة)
 **خوارزمية التدريب لمصنف Naive Bayes:**
@@ -182,7 +182,7 @@ print("Bayes Medical:", bayes(0.0001, 0.99, 0.01))
 1. تُحسب `vocab_size` (عدد الكلمات الفريدة التي رآها).
 2. يحسب $\log P(spam)$ و $\log P(ham)$.
 3. لكل كلمة (مثلاً "free"): 
-   - يحسب احتمالها في `spam` عبر صيغة لابلاس $\frac{count+1}{total+vocab\_size}$ ويضيف لوغاريتم الناتج لنتيجة الـ spam.
+   - يحسب احتمالها في `spam` عبر صيغة لابلاس $\frac{count+1}{total+\text{vocab-size}}$ ويضيف لوغاريتم الناتج لنتيجة الـ spam.
    - يكرر العملية للـ `ham`.
 4. تقارن القيمة النهائية (التي تكون سالبة بسبب اللوغاريتم للكسور) ويعيد النموذج الفئة ذات القيمة الأكبر (الأقل سلبية).
 
