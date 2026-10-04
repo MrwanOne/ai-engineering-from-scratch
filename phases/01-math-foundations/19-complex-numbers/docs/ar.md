@@ -92,7 +92,7 @@ $$(x + yi)(\cos\theta + i\sin\theta) = (x\cos\theta - y\sin\theta) + i(x\sin\the
 
 هذا يطابق تماماً ناتج ضرب مصفوفة الدوران ثنائية الأبعاد في المتجه:
 
-$$ \begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} x\cos\theta - y\sin\theta \\ x\sin\theta + y\cos\theta \end{bmatrix} $$
+$$ \begin{bmatrix} \cos\theta & -\sin\theta \\\\ \sin\theta & \cos\theta \end{bmatrix} \begin{bmatrix} x \\\\ y \end{bmatrix} = \begin{bmatrix} x\cos\theta - y\sin\theta \\\\ x\sin\theta + y\cos\theta \end{bmatrix} $$
 
 لذا، الأعداد المركبة هي مجرد طريقة أسهل حسابياً للقيام بعمليات الدوران بدلاً من المصفوفات!
 
