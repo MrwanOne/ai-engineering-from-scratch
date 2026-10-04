@@ -152,7 +152,7 @@ $$\vec{a} \cdot \vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos(\theta)$$
 
 لمقارنة الاتجاهات بغض النظر عن الأطوال:
 
-$$\text{cosine\_similarity}(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}$$
+$$\text{cosine-similarity}(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}$$
 
 $$\cos(\vec{a}, \vec{b}) = \frac{32}{\sqrt{14} \times \sqrt{77}} = \frac{32}{\sqrt{1078}} \approx 0.9746$$
 
@@ -251,10 +251,10 @@ $$v_3 = 2 \cdot v_1 + 1 \cdot v_2 = 2[1,0,0] + 1[0,1,0] = [2,1,0] \checkmark$$
 **في بيانات التدريب:**
 
 إذا كانت ميزتان (Features) تابعتين خطياً، مثلاً:
-$$\text{feature\_3} = 2 \times \text{feature\_1} + \text{feature\_2}$$
+$$\text{feature-3} = 2 \times \text{feature-1} + \text{feature-2}$$
 
 فإن:
-- إضافة $\text{feature\_3}$ لا تضيف معلومة جديدة للنموذج.
+- إضافة $\text{feature-3}$ لا تضيف معلومة جديدة للنموذج.
 - المعادلات العادية (Normal Equations) تصبح **شاذة (Singular)** — لا يوجد حل وحيد للأوزان.
 - تغيير بسيط في البيانات يُسبب تغيرات كبيرة وغير مستقرة في الأوزان.
 
