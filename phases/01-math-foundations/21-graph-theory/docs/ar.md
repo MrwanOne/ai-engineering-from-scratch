@@ -71,7 +71,7 @@ $$A_{ij} = \begin{cases} 1 & \text{إذا وُجد ضلع من العقدة } i 
 
 **مثال — المثلث** (العقد: 0، 1، 2):
 
-$$A = \begin{pmatrix} 0 & 1 & 1 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & 0 \end{pmatrix}$$
+$$A = \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix}$$
 
 لاحظ: المصفوفة **متماثلة** (A = Aᵀ) لأن الرسم البياني غير موجّه — إذا كان هناك ضلع من 0 إلى 1، فهناك ضلع من 1 إلى 0.
 
@@ -89,7 +89,7 @@ $$D = \text{diag}(d_0, d_1, \ldots, d_{n-1})$$
 
 **مثال — المثلث**: كل عقدة تتصل بعقدتين أخريين، إذن درجة كل عقدة = 2:
 
-$$D = \begin{pmatrix} 2 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 2 \end{pmatrix}$$
+$$D = \begin{pmatrix} 2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2 \end{pmatrix}$$
 
 الدرجة تقيس **أهمية العقدة** (Hub nodes): عقدة بدرجة عالية = مركز الشبكة.
 
@@ -154,7 +154,7 @@ $$L = D - A$$
 
 **مثال — المثلث:**
 
-$$L = D - A = \begin{pmatrix} 2 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 2 \end{pmatrix} - \begin{pmatrix} 0 & 1 & 1 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & 0 \end{pmatrix} = \begin{pmatrix} 2 & -1 & -1 \\\\ -1 & 2 & -1 \\\\ -1 & -1 & 2 \end{pmatrix}$$
+$$L = D - A = \begin{pmatrix} 2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2 \end{pmatrix} - \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix} = \begin{pmatrix} 2 & -1 & -1 \\ -1 & 2 & -1 \\ -1 & -1 & 2 \end{pmatrix}$$
 
 ### 7. الخصائص الرياضية الرائعة لـ Laplacian
 
@@ -229,6 +229,7 @@ graph TD
 $$h_v^{(k+1)} = \text{UPDATE}\left(h_v^{(k)},\ \text{AGGREGATE}\left(\{h_u^{(k)} : u \in \mathcal{N}(v)\}\right)\right)$$
 
 في أبسط صورة:
+
 $$h_v^{(k+1)} = \sigma\left(W \cdot \frac{1}{|\mathcal{N}(v)|}\sum_{u \in \mathcal{N}(v)} h_u^{(k)}\right)$$
 
 ### 10. Message Passing هو ضرب مصفوفات!
@@ -269,7 +270,6 @@ $$H^{(k+1)} = \sigma\left(A_{\text{norm}} \cdot H^{(k)} \cdot W\right)$$
 
 import math
 from collections import deque
-
 
 class Graph:
     """
@@ -419,7 +419,6 @@ def mat_mul(A, B):
                 C[i][j] += A[i][k] * B[k][j]
     return C
 
-
 def power_iteration(A, num_iterations=1000):
     """
     إيجاد أكبر قيمة ذاتية ومتجهها عبر تكرار القوة
@@ -443,7 +442,6 @@ def power_iteration(A, num_iterations=1000):
 
     return eigenvalue, v
 
-
 def normalized_adjacency(adj_matrix):
     """
     مصفوفة الجوار المعيّرة لـ Message Passing في GNN
@@ -459,7 +457,6 @@ def normalized_adjacency(adj_matrix):
                 # قسّم كل عنصر في الصف على درجة العقدة
                 A_norm[i][j] = adj_matrix[i][j] / degrees[i]
     return A_norm
-
 
 def message_passing(adj_matrix, node_features, num_rounds=1):
     """
@@ -524,7 +521,6 @@ def demo_social_network():
         print(f"  العقدة {i}: {[round(x, 3) for x in h]}")
 
     return g, L, H_after
-
 
 if __name__ == "__main__":
     demo_social_network()
