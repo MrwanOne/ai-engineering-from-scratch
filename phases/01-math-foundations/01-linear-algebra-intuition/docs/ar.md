@@ -80,7 +80,7 @@ $$\Delta W = A \cdot B^T \quad \text{(LoRA)}$$
 
 المتجه هو **قائمة مرتّبة من الأرقام**. لكن هذه الأرقام تمثل **إحداثيات في فضاء**.
 
-$$\vec{v} = \begin{bmatrix} 3 \\ 2 \end{bmatrix}$$
+$$\vec{v} = \begin{bmatrix} 3 \\\\ 2 \end{bmatrix}$$
 
 هذا المتجه يشير من نقطة الأصل $(0, 0)$ إلى النقطة $(3, 2)$.
 
@@ -178,7 +178,7 @@ $$\text{score}(Q_i, K_j) = Q_i \cdot K_j$$
 
 المصفوفة هي **جدول مستطيل من الأرقام** يمثل **تحويلاً خطياً** — تأخذ متجهاً من فضاء وتُعيده في فضاء آخر.
 
-$$M = \begin{bmatrix} m_{11} & m_{12} \\ m_{21} & m_{22} \end{bmatrix}$$
+$$M = \begin{bmatrix} m_{11} & m_{12} \\\\ m_{21} & m_{22} \end{bmatrix}$$
 
 #### ضرب المصفوفة × المتجه
 
@@ -188,9 +188,9 @@ $$y_i = \sum_j M_{ij} \cdot x_j$$
 
 **مثال — دوران 90° عكس عقارب الساعة:**
 
-$$M_{90°} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}, \quad \vec{x} = \begin{bmatrix} 3 \\ 1 \end{bmatrix}$$
+$$M_{90°} = \begin{bmatrix} 0 & -1 \\\\ 1 & 0 \end{bmatrix}, \quad \vec{x} = \begin{bmatrix} 3 \\\\ 1 \end{bmatrix}$$
 
-$$\vec{y} = \begin{bmatrix} 0 \cdot 3 + (-1) \cdot 1 \\ 1 \cdot 3 + 0 \cdot 1 \end{bmatrix} = \begin{bmatrix} -1 \\ 3 \end{bmatrix}$$
+$$\vec{y} = \begin{bmatrix} 0 \cdot 3 + (-1) \cdot 1 \\\\ 1 \cdot 3 + 0 \cdot 1 \end{bmatrix} = \begin{bmatrix} -1 \\\\ 3 \end{bmatrix}$$
 
 النقطة $(3, 1)$ أصبحت $(-1, 3)$ بعد الدوران 90°.
 
@@ -202,7 +202,7 @@ $$(AB)_{ij} = \sum_k A_{ik} \cdot B_{kj}$$
 
 **مثال:**
 
-$$A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}, \quad B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$$
+$$A = \begin{bmatrix} 1 & 2 \\\\ 3 & 4 \end{bmatrix}, \quad B = \begin{bmatrix} 5 & 6 \\\\ 7 & 8 \end{bmatrix}$$
 
 $$(AB)_{11} = 1 \times 5 + 2 \times 7 = 5 + 14 = 19$$
 
@@ -212,7 +212,7 @@ $$(AB)_{21} = 3 \times 5 + 4 \times 7 = 15 + 28 = 43$$
 
 $$(AB)_{22} = 3 \times 6 + 4 \times 8 = 18 + 32 = 50$$
 
-$$AB = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix}$$
+$$AB = \begin{bmatrix} 19 & 22 \\\\ 43 & 50 \end{bmatrix}$$
 
 #### المصفوفة في AI
 
@@ -454,7 +454,7 @@ orthonormal = []
 
 ### محاكاة ضرب مصفوفة × متجه يدوياً
 
-$$W = \begin{bmatrix} 0.1 & -0.2 & 0.3 \\ 0.4 & 0.5 & -0.1 \end{bmatrix}, \quad x = [1.0, 0.5, -0.3]$$
+$$W = \begin{bmatrix} 0.1 & -0.2 & 0.3 \\\\ 0.4 & 0.5 & -0.1 \end{bmatrix}, \quad x = [1.0, 0.5, -0.3]$$
 
 **الصف الأول:**
 
@@ -1203,7 +1203,7 @@ for name, score in sorted_results:
 
 **السؤال 7:** إذا كان $\vec{a} \cdot \vec{b} = 0$، ماذا يعني ذلك هندسياً؟ اذكر مثالاً من AI.
 
-**السؤال 8:** المصفوفة $\begin{bmatrix}2 & 0 \\ 0 & 3\end{bmatrix}$ — ما التحويل الهندسي الذي تُنفّذه على المتجه $[1, 1]$؟
+**السؤال 8:** المصفوفة $\begin{bmatrix}2 & 0 \\\\ 0 & 3\end{bmatrix}$ — ما التحويل الهندسي الذي تُنفّذه على المتجه $[1, 1]$؟
 
 **السؤال 9:** في `gram_schmidt`، لماذا نتحقق من `w.magnitude() < 1e-10` قبل الإضافة؟
 
@@ -1280,7 +1280,7 @@ $\vec{a} \cdot \vec{b} = 0$ يعني أن الزاوية بينهما 90° — �
 
 **السؤال 8:**
 
-$$\begin{bmatrix}2 & 0 \\ 0 & 3\end{bmatrix} \cdot \begin{bmatrix}1 \\ 1\end{bmatrix} = \begin{bmatrix}2 \cdot 1 + 0 \cdot 1 \\ 0 \cdot 1 + 3 \cdot 1\end{bmatrix} = \begin{bmatrix}2 \\ 3\end{bmatrix}$$
+$$\begin{bmatrix}2 & 0 \\\\ 0 & 3\end{bmatrix} \cdot \begin{bmatrix}1 \\\\ 1\end{bmatrix} = \begin{bmatrix}2 \cdot 1 + 0 \cdot 1 \\\\ 0 \cdot 1 + 3 \cdot 1\end{bmatrix} = \begin{bmatrix}2 \\\\ 3\end{bmatrix}$$
 
 التحويل: مقياس (Scaling) — يُضاعف المحور الأفقي مرتين ويُضاعف المحور الرأسي ثلاث مرات.
 
@@ -1290,7 +1290,7 @@ $$\begin{bmatrix}2 & 0 \\ 0 & 3\end{bmatrix} \cdot \begin{bmatrix}1 \\ 1\end{bma
 
 **السؤال 10:**
 
-مثال: $A = \begin{bmatrix}1 & 0 & 2 \\ 0 & 1 & 1 \\ 0 & 0 & 0\end{bmatrix}$
+مثال: $A = \begin{bmatrix}1 & 0 & 2 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 0\end{bmatrix}$
 
 العمود الثالث = 2 × العمود الأول + 1 × العمود الثاني → رتبة 2.
 
