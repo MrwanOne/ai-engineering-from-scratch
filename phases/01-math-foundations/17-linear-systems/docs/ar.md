@@ -93,13 +93,13 @@ $$ \kappa(A) = \frac{\sigma_{max}}{\sigma_{min}} $$
 $$ 2x_1 + x_2 = 5 $$
 $$ 4x_1 + 3x_2 = 11 $$
 بالمصفوفات:
-$$ \begin{bmatrix} 2 & 1 \\ 4 & 3 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} 5 \\ 11 \end{bmatrix} $$
+$$ \begin{bmatrix} 2 & 1 \\\\ 4 & 3 \end{bmatrix} \begin{bmatrix} x_1 \\\\ x_2 \end{bmatrix} = \begin{bmatrix} 5 \\\\ 11 \end{bmatrix} $$
 1. المحور الجزئي (Partial Pivoting): القيمة الأكبر في العمود الأول هي 4 (الصف الثاني). نبدل الصفين:
-$$ \begin{bmatrix} 4 & 3 & | & 11 \\ 2 & 1 & | & 5 \end{bmatrix} $$
+$$ \begin{bmatrix} 4 & 3 & | & 11 \\\\ 2 & 1 & | & 5 \end{bmatrix} $$
 2. الحذف: المعامل $m = 2/4 = 0.5$. نطرح $0.5 \times$ الصف الأول من الصف الثاني:
 الجديد: $2 - 0.5(4) = 0$, $1 - 0.5(3) = -0.5$, $5 - 0.5(11) = -0.5$.
 المصفوفة الجديدة:
-$$ \begin{bmatrix} 4 & 3 & | & 11 \\ 0 & -0.5 & | & -0.5 \end{bmatrix} $$
+$$ \begin{bmatrix} 4 & 3 & | & 11 \\\\ 0 & -0.5 & | & -0.5 \end{bmatrix} $$
 3. التعويض العكسي:
 $-0.5 x_2 = -0.5 \implies x_2 = 1$
 $4x_1 + 3(1) = 11 \implies 4x_1 = 8 \implies x_1 = 2$.
