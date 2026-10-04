@@ -26,7 +26,9 @@
 افتح أي ورقة بحثية في Machine Learning. في الصفحة الأولى ستجد:
 
 $$W \cdot x + b$$
+
 $$\text{softmax}(QK^T / \sqrt{d_k}) \cdot V$$
+
 $$\Delta W = A \cdot B^T \quad \text{(LoRA)}$$
 
 **هذه كلها عمليات جبر خطي.**
@@ -78,7 +80,7 @@ $$\Delta W = A \cdot B^T \quad \text{(LoRA)}$$
 
 المتجه هو **قائمة مرتّبة من الأرقام**. لكن هذه الأرقام تمثل **إحداثيات في فضاء**.
 
-$$\vec{v} = \begin{bmatrix} 3 \\\\ 2 \end{bmatrix}$$
+$$\vec{v} = \begin{bmatrix} 3 \\ 2 \end{bmatrix}$$
 
 هذا المتجه يشير من نقطة الأصل $(0, 0)$ إلى النقطة $(3, 2)$.
 
@@ -176,7 +178,7 @@ $$\text{score}(Q_i, K_j) = Q_i \cdot K_j$$
 
 المصفوفة هي **جدول مستطيل من الأرقام** يمثل **تحويلاً خطياً** — تأخذ متجهاً من فضاء وتُعيده في فضاء آخر.
 
-$$M = \begin{bmatrix} m_{11} & m_{12} \\\\ m_{21} & m_{22} \end{bmatrix}$$
+$$M = \begin{bmatrix} m_{11} & m_{12} \\ m_{21} & m_{22} \end{bmatrix}$$
 
 #### ضرب المصفوفة × المتجه
 
@@ -186,9 +188,9 @@ $$y_i = \sum_j M_{ij} \cdot x_j$$
 
 **مثال — دوران 90° عكس عقارب الساعة:**
 
-$$M_{90°} = \begin{bmatrix} 0 & -1 \\\\ 1 & 0 \end{bmatrix}, \quad \vec{x} = \begin{bmatrix} 3 \\\\ 1 \end{bmatrix}$$
+$$M_{90°} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}, \quad \vec{x} = \begin{bmatrix} 3 \\ 1 \end{bmatrix}$$
 
-$$\vec{y} = \begin{bmatrix} 0 \cdot 3 + (-1) \cdot 1 \\\\ 1 \cdot 3 + 0 \cdot 1 \end{bmatrix} = \begin{bmatrix} -1 \\\\ 3 \end{bmatrix}$$
+$$\vec{y} = \begin{bmatrix} 0 \cdot 3 + (-1) \cdot 1 \\ 1 \cdot 3 + 0 \cdot 1 \end{bmatrix} = \begin{bmatrix} -1 \\ 3 \end{bmatrix}$$
 
 النقطة $(3, 1)$ أصبحت $(-1, 3)$ بعد الدوران 90°.
 
@@ -199,14 +201,18 @@ $$(AB)_{ij} = \sum_k A_{ik} \cdot B_{kj}$$
 شرط: عدد أعمدة $A$ = عدد صفوف $B$.
 
 **مثال:**
-$$A = \begin{bmatrix} 1 & 2 \\\\ 3 & 4 \end{bmatrix}, \quad B = \begin{bmatrix} 5 & 6 \\\\ 7 & 8 \end{bmatrix}$$
+
+$$A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}, \quad B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$$
 
 $$(AB)_{11} = 1 \times 5 + 2 \times 7 = 5 + 14 = 19$$
+
 $$(AB)_{12} = 1 \times 6 + 2 \times 8 = 6 + 16 = 22$$
+
 $$(AB)_{21} = 3 \times 5 + 4 \times 7 = 15 + 28 = 43$$
+
 $$(AB)_{22} = 3 \times 6 + 4 \times 8 = 18 + 32 = 50$$
 
-$$AB = \begin{bmatrix} 19 & 22 \\\\ 43 & 50 \end{bmatrix}$$
+$$AB = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix}$$
 
 #### المصفوفة في AI
 
@@ -251,6 +257,7 @@ $$v_3 = 2 \cdot v_1 + 1 \cdot v_2 = 2[1,0,0] + 1[0,1,0] = [2,1,0] \checkmark$$
 **في بيانات التدريب:**
 
 إذا كانت ميزتان (Features) تابعتين خطياً، مثلاً:
+
 $$\text{feature-3} = 2 \times \text{feature-1} + \text{feature-2}$$
 
 فإن:
@@ -351,11 +358,13 @@ $$u_1 = \frac{v_1}{|v_1|}$$
 **الخطوة 2:** أزل من $v_2$ مكوّنه في اتجاه $u_1$، ثم طبّع:
 
 $$w_2 = v_2 - (v_2 \cdot u_1) \cdot u_1$$
+
 $$u_2 = \frac{w_2}{|w_2|}$$
 
 **الخطوة 3:** أزل من $v_3$ مكوّناته في اتجاه $u_1$ و$u_2$، ثم طبّع:
 
 $$w_3 = v_3 - (v_3 \cdot u_1) \cdot u_1 - (v_3 \cdot u_2) \cdot u_2$$
+
 $$u_3 = \frac{w_3}{|w_3|}$$
 
 **المخرجات:** $\{u_1, u_2, u_3\}$ — متعامدة ومطبّعة.
@@ -365,12 +374,17 @@ $$u_3 = \frac{w_3}{|w_3|}$$
 $$v_1 = [1, 1, 0], \quad v_2 = [1, 0, 1], \quad v_3 = [0, 1, 1]$$
 
 **$u_1$:**
+
 $$|v_1| = \sqrt{1^2+1^2+0^2} = \sqrt{2}$$
+
 $$u_1 = \frac{[1,1,0]}{\sqrt{2}} = [0.707, 0.707, 0]$$
 
 **$w_2$:**
+
 $$v_2 \cdot u_1 = 1 \times 0.707 + 0 \times 0.707 + 1 \times 0 = 0.707$$
+
 $$w_2 = [1, 0, 1] - 0.707 \times [0.707, 0.707, 0] = [1, 0, 1] - [0.5, 0.5, 0] = [0.5, -0.5, 1]$$
+
 $$u_2 = \frac{[0.5, -0.5, 1]}{|[0.5,-0.5,1]|} = \frac{[0.5,-0.5,1]}{\sqrt{1.5}} \approx [0.408, -0.408, 0.816]$$
 
 تحقق: $u_1 \cdot u_2 = 0.707 \times 0.408 + 0.707 \times (-0.408) + 0 \times 0.816 = 0.289 - 0.289 = 0$ ✓
@@ -440,16 +454,18 @@ orthonormal = []
 
 ### محاكاة ضرب مصفوفة × متجه يدوياً
 
-$$W = \begin{bmatrix} 0.1 & -0.2 & 0.3 \\\\ 0.4 & 0.5 & -0.1 \end{bmatrix}, \quad x = [1.0, 0.5, -0.3]$$
+$$W = \begin{bmatrix} 0.1 & -0.2 & 0.3 \\ 0.4 & 0.5 & -0.1 \end{bmatrix}, \quad x = [1.0, 0.5, -0.3]$$
 
 **الصف الأول:**
 
 $$y_1 = 0.1 \times 1.0 + (-0.2) \times 0.5 + 0.3 \times (-0.3)$$
+
 $$= 0.1 - 0.1 - 0.09 = -0.09$$
 
 **الصف الثاني:**
 
 $$y_2 = 0.4 \times 1.0 + 0.5 \times 0.5 + (-0.1) \times (-0.3)$$
+
 $$= 0.4 + 0.25 + 0.03 = 0.68$$
 
 $$\vec{y} = [-0.09, \; 0.68]$$
@@ -483,6 +499,7 @@ class Vector:
 ```
 
 **الرياضيات:**
+
 $$[a_1, a_2, a_3] + [b_1, b_2, b_3] = [a_1+b_1, a_2+b_2, a_3+b_3]$$
 
 **ما يفعله Python:**
@@ -500,6 +517,7 @@ $$[a_1, a_2, a_3] + [b_1, b_2, b_3] = [a_1+b_1, a_2+b_2, a_3+b_3]$$
 ```
 
 **الرياضيات:**
+
 $$\vec{a} \cdot \vec{b} = \sum_i a_i \times b_i$$
 
 - `zip`: يُنتج أزواجاً.
@@ -517,6 +535,7 @@ $1 \times 4 + 2 \times 5 + 3 \times 6 = 4 + 10 + 18 = 32$
 ```
 
 **الرياضيات:**
+
 $$|\vec{v}| = \sqrt{\sum_i v_i^2}$$
 
 - `x**2`: تربيع كل عنصر.
@@ -532,6 +551,7 @@ $$|\vec{v}| = \sqrt{\sum_i v_i^2}$$
 ```
 
 **الرياضيات:**
+
 $$\hat{v} = \frac{\vec{v}}{|\vec{v}|}$$
 
 نقسم كل عنصر على المقدار لنحصل على متجه بطول 1.
@@ -544,6 +564,7 @@ $$\hat{v} = \frac{\vec{v}}{|\vec{v}|}$$
 ```
 
 **الرياضيات:**
+
 $$\text{sim}(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}$$
 
 ---
@@ -557,6 +578,7 @@ $$\text{sim}(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\
 ```
 
 **الرياضيات:**
+
 $$\theta = \arccos\left(\frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}\right)$$
 
 **لماذا `max(-1.0, min(1.0, cos_theta))`؟**
@@ -571,6 +593,7 @@ $$\theta = \arccos\left(\frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}\
 ```
 
 **الرياضيات:**
+
 $$\text{proj}_{\vec{b}}(\vec{a}) = \frac{\vec{a} \cdot \vec{b}}{\vec{b} \cdot \vec{b}} \cdot \vec{b}$$
 
 - `self.dot(other)`: $\vec{a} \cdot \vec{b}$
@@ -916,6 +939,7 @@ print(f"d(dot)/dx = {x.grad}")  # يساوي y تلقائياً!
 $$\frac{\partial (\vec{x} \cdot \vec{y})}{\partial \vec{x}} = \vec{y}$$
 
 هذا لأن:
+
 $$\vec{x} \cdot \vec{y} = x_1 y_1 + x_2 y_2 + x_3 y_3$$
 
 فالمشتقة بالنسبة لـ $x_i$ هي $y_i$.
@@ -1179,7 +1203,7 @@ for name, score in sorted_results:
 
 **السؤال 7:** إذا كان $\vec{a} \cdot \vec{b} = 0$، ماذا يعني ذلك هندسياً؟ اذكر مثالاً من AI.
 
-**السؤال 8:** المصفوفة $\begin{bmatrix}2 & 0 \\\\ 0 & 3\end{bmatrix}$ — ما التحويل الهندسي الذي تُنفّذه على المتجه $[1, 1]$؟
+**السؤال 8:** المصفوفة $\begin{bmatrix}2 & 0 \\ 0 & 3\end{bmatrix}$ — ما التحويل الهندسي الذي تُنفّذه على المتجه $[1, 1]$؟
 
 **السؤال 9:** في `gram_schmidt`، لماذا نتحقق من `w.magnitude() < 1e-10` قبل الإضافة؟
 
@@ -1256,7 +1280,7 @@ $\vec{a} \cdot \vec{b} = 0$ يعني أن الزاوية بينهما 90° — �
 
 **السؤال 8:**
 
-$$\begin{bmatrix}2 & 0 \\\\ 0 & 3\end{bmatrix} \cdot \begin{bmatrix}1 \\\\ 1\end{bmatrix} = \begin{bmatrix}2 \cdot 1 + 0 \cdot 1 \\\\ 0 \cdot 1 + 3 \cdot 1\end{bmatrix} = \begin{bmatrix}2 \\\\ 3\end{bmatrix}$$
+$$\begin{bmatrix}2 & 0 \\ 0 & 3\end{bmatrix} \cdot \begin{bmatrix}1 \\ 1\end{bmatrix} = \begin{bmatrix}2 \cdot 1 + 0 \cdot 1 \\ 0 \cdot 1 + 3 \cdot 1\end{bmatrix} = \begin{bmatrix}2 \\ 3\end{bmatrix}$$
 
 التحويل: مقياس (Scaling) — يُضاعف المحور الأفقي مرتين ويُضاعف المحور الرأسي ثلاث مرات.
 
@@ -1266,7 +1290,7 @@ $$\begin{bmatrix}2 & 0 \\\\ 0 & 3\end{bmatrix} \cdot \begin{bmatrix}1 \\\\ 1\end
 
 **السؤال 10:**
 
-مثال: $A = \begin{bmatrix}1 & 0 & 2 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 0\end{bmatrix}$
+مثال: $A = \begin{bmatrix}1 & 0 & 2 \\ 0 & 1 & 1 \\ 0 & 0 & 0\end{bmatrix}$
 
 العمود الثالث = 2 × العمود الأول + 1 × العمود الثاني → رتبة 2.
 
